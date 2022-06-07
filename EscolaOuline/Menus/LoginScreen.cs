@@ -7,7 +7,7 @@ using EscolaOuline.AccountsDto;
 using EscolaOuline;
 using EscolaOuline.Menus;
 using System.Threading;
-
+using EscolaOuline.Services;
 
 namespace EscolaOuline.Menus
 {
@@ -15,6 +15,9 @@ namespace EscolaOuline.Menus
     {
         RegistrationScreen RegistrationScreen = new RegistrationScreen();
         UsersMenu usersMenu = new UsersMenu();
+        GenerateDefaultList generateDefaultList = new GenerateDefaultList();
+        ProfessorsMenu professorsMenu = new ProfessorsMenu();
+
         public void LoginScreenCall()
         {
             Console.Clear();
@@ -55,71 +58,12 @@ namespace EscolaOuline.Menus
             Console.WriteLine("                                                                                                               ");
             Console.WriteLine("                                                                                     --> press F12 to register                        ");
 
-            //Create local Accounts
+            //Generate Students and professors 
 
-            var ProfessorsList = new List<ProfessorAccount>();
-            var studentAccountList = new List<StudentAccount>();
-
-            //Professors List
-            ProfessorsList.Add(new ProfessorAccount(1)
-            {
-                User = "Guilherme",
-                Password = "ChurrascoComCoca22",
-                Ocupation = "Math teacher",
-                Salary = 1200.00
-            });
-
-            ProfessorsList.Add(new ProfessorAccount(2)
-            {
-                User = "Clebinho562",
-                Password = "MbK20",
-                Ocupation = "English teacher",
-                Salary = 1200.00
-            });
-            ProfessorsList.Add(new ProfessorAccount(3)
-            {
-                User = "BoloComSorvete",
-                Password = "NumSeiCara06",
-                Ocupation = "Biology teacher",
-                Salary = 1200.00,
-            });
-
-            //Admin Acess
-            ProfessorsList.Add(new ProfessorAccount(000)
-            {
-                User = "IsmaelGabri",
-                Password = "z9)Fd6Ln_&D]6pVs",
-                Ocupation = "Math teacher",
-                Salary = 1200.00,
-            });
-
-            //Students List
-            studentAccountList.Add(new StudentAccount(1)
-            {
-                UserName = "Clebinho",
-                Password = "Fortnite22",
-                Curso = "Ciencia da computacao",
-                Turma = 1003
-            }); 
-            studentAccountList.Add(new StudentAccount(2)
-            {
-                UserName = "Marcia",
-                Password = "Brigadeiro33",
-                Curso = "Engenharia",
-                Turma = 2002
-            });
-            studentAccountList.Add(new StudentAccount(3)
-            {
-                UserName = "Pedro",
-                Curso = "Medicina",
-                Password = "AcendeOlanca44",
-                Turma = 3002
-            });
+            var studentAccountLists = generateDefaultList.GenerateStudentLists();
+            var professorsList = generateDefaultList.GenerateProfessorsLists();
 
             CatchAndCheckLogin();
-
-
-
 
             //Methods -->
 
@@ -134,13 +78,22 @@ namespace EscolaOuline.Menus
                 string password = Console.ReadLine();
 
                 Console.SetCursorPosition(43, 27);
-                //Validade login information -->
 
-                foreach (StudentAccount student in studentAccountList)
+                //Validade login information and go to menu if correct -->
+
+                foreach (StudentAccount student in studentAccountLists)
                 {
                     if (userName == student.UserName && password == student.Password)
                     {
                         usersMenu.UsersMenuCall(student.UserName);
+                    }
+                }
+
+                foreach (ProfessorAccount professor in professorsList)
+                {
+                    if (userName == professor.Name && password == professor.Password)
+                    {
+                        professorsMenu.ProfessorsMenuCall(professor.Name);
                     }
                 }
             }

@@ -11,6 +11,8 @@ namespace EscolaOuline.Services
     class AccountServices
     {
         static UsersMenu usersMenu = new UsersMenu();
+        ProfessorsMenu professorsMenu = new ProfessorsMenu();
+
         //change the return type to StudentAccount
         public void ShowStudentInformation(string name, List<StudentAccount> studentsList)
         {
@@ -33,6 +35,31 @@ namespace EscolaOuline.Services
                     Console.WriteLine("Pressione ENTER para retornar");
                     Console.ReadLine();
                     usersMenu.UsersMenuCall(name);
+                }
+            }
+        }
+
+        public void ShowProfessorInformation(string name, List<ProfessorAccount> professorsList)
+        {
+            foreach (ProfessorAccount professorAccount in professorsList)
+            {
+                if (professorAccount.Name == name)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Suas informacoes:");
+                    Console.WriteLine();
+                    Console.WriteLine("------------------------------");
+                    Console.WriteLine($"ID: {professorAccount.Id}");
+                    Console.WriteLine($"Nome: {professorAccount.Name}");
+                    Console.WriteLine($"Ocupacao: {professorAccount.Ocupation}");
+                    Console.WriteLine($"Senha: {professorAccount.Password}");
+                    Console.WriteLine($"Salário: {professorAccount.Salary}");
+                    Console.WriteLine("-----------------------------");
+
+                    Console.WriteLine();
+                    Console.WriteLine("Pressione ENTER para retornar");
+                    Console.ReadLine();
+                    professorsMenu.ProfessorsMenuCall(name);
                 }
             }
         }
