@@ -8,36 +8,48 @@ using EscolaOuline;
 using EscolaOuline.Menus;
 using System.Threading;
 
+
 namespace EscolaOuline.Menus
 {
     public class LoginScreen
     {
-
+        RegistrationScreen RegistrationScreen = new RegistrationScreen();
         UsersMenu usersMenu = new UsersMenu();
         public void LoginScreenCall()
         {
-            Console.SetCursorPosition(50, 15);
-            Console.WriteLine("Escola Ouline");
+            Console.Clear();
 
+            string title = @"
+     $$$$$$$$\                               $$\                                     $$\ $$\                     
+     $$  _____|                              $$ |                                    $$ |\__|                    
+     $$ |       $$$$$$$\  $$$$$$$\  $$$$$$\  $$ | $$$$$$\         $$$$$$\  $$\   $$\ $$ |$$\ $$$$$$$\   $$$$$$\  
+     $$$$$\    $$  _____|$$  _____|$$  __$$\ $$ | \____$$\       $$  __$$\ $$ |  $$ |$$ |$$ |$$  __$$\ $$  __$$\ 
+     $$  __|   \$$$$$$\  $$ /      $$ /  $$ |$$ | $$$$$$$ |      $$ /  $$ |$$ |  $$ |$$ |$$ |$$ |  $$ |$$$$$$$$ |
+     $$ |       \____$$\ $$ |      $$ |  $$ |$$ |$$  __$$ |      $$ |  $$ |$$ |  $$ |$$ |$$ |$$ |  $$ |$$   ____|
+     $$$$$$$$\ $$$$$$$  |\$$$$$$$\ \$$$$$$  |$$ |\$$$$$$$ |      \$$$$$$  |\$$$$$$  |$$ |$$ |$$ |  $$ |\$$$$$$$\ 
+     \________|\_______/  \_______| \______/ \__| \_______|       \______/  \______/ \__|\__|\__|  \__| \_______|
 
+";
+
+            Console.WriteLine(title);
 
             bool loginScreenActive = true;
 
             
-            Console.WriteLine("                                  _____________________________________________                                ");
-            Console.WriteLine("                                 |                                             |                               ");
-            Console.WriteLine("                                 |         ___________________________         |                               ");
-            Console.WriteLine("                                 |        |                           |        |                               ");
-            Console.WriteLine("                                 |        |      Tela de Login        |        |                               ");
-            Console.WriteLine("                                 |        |___________________________|        |                               ");
-            Console.WriteLine("                                 |                                             |                               ");
-            Console.WriteLine("                                 |                                             |                               ");
-            Console.WriteLine("                                 |         Username:                           |                               ");
-            Console.WriteLine("                                 |         Password:                           |                               ");
-            Console.WriteLine("                                 |                                             |                               ");
-            Console.WriteLine("                                 |                                             |                               ");
-            Console.WriteLine("                                 |_____________________________________________|                               ");
-            Console.WriteLine("                                                                                                               ");
+            Console.WriteLine("                                  _______________________________________________                           ");
+            Console.WriteLine("                                 |                                             | |                           ");
+            Console.WriteLine("                                 |         ___________________________         | |                             ");
+            Console.WriteLine("                                 |        |                           |        | |                              ");
+            Console.WriteLine("                                 |        |      Tela de Login        |        | |                              ");
+            Console.WriteLine("                                 |        |___________________________|        | |                              ");
+            Console.WriteLine("                                 |                                             | |                              ");
+            Console.WriteLine("                                 |                                             | |                              ");
+            Console.WriteLine("                                 |         Username:                           | |                             ");
+            Console.WriteLine("                                 |         Password:                           | |                              ");
+            Console.WriteLine("                                 |                                             | |                              ");
+            Console.WriteLine("                                 |                                             | |                              ");
+            Console.WriteLine("                                 |_____________________________________________| |                              ");
+            Console.WriteLine(@"                                 \______________________________________________\|                                                                           ");
             Console.WriteLine("                                                                                                               ");
             Console.WriteLine("                                                                                                               ");
             Console.WriteLine("                                                                                                               ");
@@ -86,28 +98,38 @@ namespace EscolaOuline.Menus
             {
                 UserName = "Clebinho",
                 Password = "Fortnite22",
+                Curso = "Ciencia da computacao",
                 Turma = 1003
-            });
+            }); 
             studentAccountList.Add(new StudentAccount(2)
             {
                 UserName = "Marcia",
                 Password = "Brigadeiro33",
+                Curso = "Engenharia",
                 Turma = 2002
             });
             studentAccountList.Add(new StudentAccount(3)
             {
                 UserName = "Pedro",
+                Curso = "Medicina",
                 Password = "AcendeOlanca44",
                 Turma = 3002
             });
 
+            CatchAndCheckLogin();
+
+
+
+
+            //Methods -->
+
             void CatchAndCheckLogin()
             {
-                Console.SetCursorPosition(53, 24);
+                Console.SetCursorPosition(53, 19);
 
                 var userName = Console.ReadLine();
 
-                Console.SetCursorPosition(53, 25);
+                Console.SetCursorPosition(53, 20);
 
                 string password = Console.ReadLine();
 
@@ -130,23 +152,13 @@ namespace EscolaOuline.Menus
                     var userInput = Console.ReadKey();
                     if (userInput.Key == ConsoleKey.F12)
                     {
+                        loginScreenActive = false;
                         Console.Clear();
-                        Console.WriteLine("Register screen works!");
+                        RegistrationScreen.RegistrationMenuCall();
                     }
                 }
                 while (loginScreenActive);
             }
-
-            //Run both threads
-
-            Thread mainThread = Thread.CurrentThread;
-            mainThread.Name = "Main Thread";
-
-            Thread thread1 = new Thread(CatchAndCheckLogin);
-            Thread thread2 = new Thread(ToRegistrate);
-
-            thread2.Start();
-            thread1.Start();
         }
     }
 }
