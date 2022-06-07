@@ -12,8 +12,8 @@ namespace EscolaOuline.AccountsDto
         {
             Id = id;
         }
+        public string Name { get; set; }
         public int Id { get; set; }
-        public string User { get; set; }
         public string Password { get; set; }
         public string Ocupation { get; set; }
         public double Salary { get; set; }

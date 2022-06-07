@@ -1,42 +1,45 @@
-﻿using System;
+﻿using EscolaOuline.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Threading;
-using EscolaOuline.Services;
-using EscolaOuline.AccountsDto;
+using System.Threading.Tasks;
 
 namespace EscolaOuline.Menus
 {
-    class UsersMenu
+    class ProfessorsMenu
     {
+        static GenerateDefaultList generateDefaultList = new GenerateDefaultList();
         static AccountServices accountServices = new AccountServices();
         static LoginScreen loginScreen = new LoginScreen();
-        static GenerateDefaultList generateDefaultList = new GenerateDefaultList();
-        public void UsersMenuCall(string user)
+        public void ProfessorsMenuCall(string name)
         {
-            //Generate Students List
-            var studentAccountList = generateDefaultList.GenerateStudentLists();
-
             Console.Clear();
+
+            var profesorsAccountList = generateDefaultList.GenerateProfessorsLists();
 
             string title = @"
                                                                                                     
                                                                            
-  /$$$$$$   /$$$$$$$ /$$$$$$   /$$   /$$  /$$$$$$$  /$$$$$$  /$$$$$$$  /$$$$$$    /$$$$$$ 
- /$$__  $$ /$$_____/|_  $$_/  | $$  | $$ /$$__  $$ |____  $$| $$__  $$|_  $$_/   /$$__  $$
-| $$$$$$$$|  $$$$$$   | $$    | $$  | $$| $$  | $$  /$$$$$$$| $$  \ $$  | $$    | $$$$$$$$
-| $$_____/ \____  $$  | $$ /$$| $$  | $$| $$  | $$ /$$__  $$| $$  | $$  | $$ /$$| $$_____/
-|  $$$$$$$ /$$$$$$$/  |  $$$$/|  $$$$$$/|  $$$$$$$|  $$$$$$$| $$  | $$  |  $$$$/|  $$$$$$$
- \_______/|_______/    \___/   \______/  \_______/ \_______/|__/  |__/   \___/   \_______/
+                                /$$$$$$                                                
+                               /$$__  $$                                               
+  /$$$$$$   /$$$$$$   /$$$$$$ | $$  \__//$$$$$$   /$$$$$$$ /$$$$$$$  /$$$$$$   /$$$$$$ 
+ /$$__  $$ /$$__  $$ /$$__  $$| $$$$   /$$__  $$ /$$_____//$$_____/ /$$__  $$ /$$__  $$
+| $$  \ $$| $$  \__/| $$  \ $$| $$_/  | $$$$$$$$|  $$$$$$|  $$$$$$ | $$  \ $$| $$  \__/
+| $$  | $$| $$      | $$  | $$| $$    | $$_____/ \____  $$\____  $$| $$  | $$| $$      
+| $$$$$$$/| $$      |  $$$$$$/| $$    |  $$$$$$$ /$$$$$$$//$$$$$$$/|  $$$$$$/| $$      
+| $$____/ |__/       \______/ |__/     \_______/|_______/|_______/  \______/ |__/      
+| $$                                                                                   
+| $$                                                                                   
+|__/                                                                                   
 
                                      ";
 
             Console.WriteLine(title);
 
 
-            Console.WriteLine($"Bem-vindo a sua conta {user}! O que deseja realizar?");
+            Console.WriteLine($"Bem-vindo a sua conta professor {name}! O que deseja realizar?");
             Console.WriteLine("---------------");
             Console.WriteLine();
             Console.WriteLine("[1] - Minhas informacoes ");
@@ -51,20 +54,20 @@ namespace EscolaOuline.Menus
 
             int answer;
 
-            if(int.TryParse(Console.ReadLine(), out answer))
+            if (int.TryParse(Console.ReadLine(), out answer))
             {
-                if(answer > 4 || answer < 1)
+                if (answer > 4 || answer < 1)
                 {
                     Console.WriteLine("[!] Escolha Apenas uma das opções disponíveis [!]");
                     Thread.Sleep(3000);
-                    UsersMenuCall(user);
+                    ProfessorsMenuCall(name);
                 }
                 else
                 {
                     switch (answer)
                     {
                         case 1:
-                            accountServices.ShowStudentInformation(user, studentAccountList);
+                            accountServices.ShowProfessorInformation(name, profesorsAccountList);
                             break;
                         case 2:
 
