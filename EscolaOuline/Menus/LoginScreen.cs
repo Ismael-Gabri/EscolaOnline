@@ -12,30 +12,31 @@ namespace EscolaOuline.Menus
 {
     public class LoginScreen
     {
+
         UsersMenu usersMenu = new UsersMenu();
         public void LoginScreenCall()
         {
+            Console.SetCursorPosition(50, 15);
+            Console.WriteLine("Escola Ouline");
+
+
+
             bool loginScreenActive = true;
 
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("                                                                                                               ");
-            Console.WriteLine("                                                                                                               ");
-            Console.WriteLine("                                                                                                               ");
-            Console.WriteLine("                                  ______________________________________________                               ");
-            Console.WriteLine("                                 |                                              |                              ");
-            Console.WriteLine("                                 |         ___________________________          |                              ");
-            Console.WriteLine("                                 |        |                           |         |                              ");
-            Console.WriteLine("                                 |        |      Tela de Login        |         |                              ");
-            Console.WriteLine("                                 |        |___________________________|         |                              ");
-            Console.WriteLine("                                 |                                              |                              ");
-            Console.WriteLine("                                 |                                              |                              ");
-            Console.WriteLine("                                 |         Username:                            |                              ");
-            Console.WriteLine("                                 |         Password:                            |                              ");
-            Console.WriteLine("                                 |                                              |                              ");
-            Console.WriteLine("                                 |                                              |                              ");
-            Console.WriteLine("                                 |______________________________________________|                              ");
+            
+            Console.WriteLine("                                  _____________________________________________                                ");
+            Console.WriteLine("                                 |                                             |                               ");
+            Console.WriteLine("                                 |         ___________________________         |                               ");
+            Console.WriteLine("                                 |        |                           |        |                               ");
+            Console.WriteLine("                                 |        |      Tela de Login        |        |                               ");
+            Console.WriteLine("                                 |        |___________________________|        |                               ");
+            Console.WriteLine("                                 |                                             |                               ");
+            Console.WriteLine("                                 |                                             |                               ");
+            Console.WriteLine("                                 |         Username:                           |                               ");
+            Console.WriteLine("                                 |         Password:                           |                               ");
+            Console.WriteLine("                                 |                                             |                               ");
+            Console.WriteLine("                                 |                                             |                               ");
+            Console.WriteLine("                                 |_____________________________________________|                               ");
             Console.WriteLine("                                                                                                               ");
             Console.WriteLine("                                                                                                               ");
             Console.WriteLine("                                                                                                               ");
@@ -102,12 +103,15 @@ namespace EscolaOuline.Menus
 
             void CatchAndCheckLogin()
             {
-                Console.WriteLine("");
+                Console.SetCursorPosition(53, 24);
+
                 var userName = Console.ReadLine();
 
-                Console.WriteLine("");
+                Console.SetCursorPosition(53, 25);
+
                 string password = Console.ReadLine();
 
+                Console.SetCursorPosition(43, 27);
                 //Validade login information -->
 
                 foreach (StudentAccount student in studentAccountList)
@@ -127,7 +131,7 @@ namespace EscolaOuline.Menus
                     if (userInput.Key == ConsoleKey.F12)
                     {
                         Console.Clear();
-                        Console.WriteLine("Register scrren works!");
+                        Console.WriteLine("Register screen works!");
                     }
                 }
                 while (loginScreenActive);
@@ -141,10 +145,8 @@ namespace EscolaOuline.Menus
             Thread thread1 = new Thread(CatchAndCheckLogin);
             Thread thread2 = new Thread(ToRegistrate);
 
-            thread1.Start();
             thread2.Start();
-
-            loginScreenActive = false;
+            thread1.Start();
         }
     }
 }

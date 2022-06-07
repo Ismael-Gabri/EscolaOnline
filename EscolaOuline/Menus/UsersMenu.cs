@@ -10,7 +10,7 @@ namespace EscolaOuline.Menus
     {
         public void UsersMenuCall(string user)
         {
-            Console.WriteLine("Esse é o menu do usuario!");
+            Console.WriteLine("Login bem sucedido!");
         }
     }
 }
