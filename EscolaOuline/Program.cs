@@ -14,7 +14,10 @@ namespace EscolaOuline
         static LoginScreen loginScreen = new LoginScreen();
         static void Main(string[] args)
         {
-            loginScreen.LoginScreenCall();
+            var studentAccountLists = generateDefaultList.GenerateStudentLists();
+            var professorsList = generateDefaultList.GenerateProfessorsLists();
+
+            loginScreen.LoginScreenCall(studentAccountLists, professorsList);
         }
     }
 }

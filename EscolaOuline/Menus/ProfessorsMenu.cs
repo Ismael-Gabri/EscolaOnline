@@ -79,7 +79,7 @@ namespace EscolaOuline.Menus
                             break;
                         case 4:
                             Console.SetCursorPosition(53, 19);
-                            loginScreen.LoginScreenCall();
+                            loginScreen.LoginScreenCall(studentAccounts, profesorsAccountList);
                             break;
                     }
                 }

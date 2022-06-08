@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EscolaOuline.AccountsDto
 {
-    class ProfessorAccount
+    public class ProfessorAccount
     {
         public ProfessorAccount()
         {

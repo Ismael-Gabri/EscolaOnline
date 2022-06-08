@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EscolaOuline.AccountsDto
 {
-    class Contact
+    public class Contact
     {
         public string Email { get; set; }
         public string Telefone { get; set; }
