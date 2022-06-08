@@ -14,10 +14,9 @@ namespace EscolaOuline.Menus
         static AccountServices accountServices = new AccountServices();
         static LoginScreen loginScreen = new LoginScreen();
         static GenerateDefaultList generateDefaultList = new GenerateDefaultList();
-        public void UsersMenuCall(string user)
+        public void UsersMenuCall(string user, List<StudentAccount> studentAccounts, List<ProfessorAccount> professorAccounts)
         {
-            //Generate Students List
-            var studentAccountList = generateDefaultList.GenerateStudentLists();
+       
 
             Console.Clear();
 
@@ -57,14 +56,14 @@ namespace EscolaOuline.Menus
                 {
                     Console.WriteLine("[!] Escolha Apenas uma das opções disponíveis [!]");
                     Thread.Sleep(3000);
-                    UsersMenuCall(user);
+                    UsersMenuCall(user, studentAccounts, professorAccounts);
                 }
                 else
                 {
                     switch (answer)
                     {
                         case 1:
-                            accountServices.ShowStudentInformation(user, studentAccountList);
+                            accountServices.ShowStudentInformation(user, studentAccounts, professorAccounts);
                             break;
                         case 2:
 
@@ -74,7 +73,7 @@ namespace EscolaOuline.Menus
                             break;
                         case 4:
                             Console.SetCursorPosition(53, 19);
-                            loginScreen.LoginScreenCall();
+                            loginScreen.LoginScreenCall(studentAccounts, professorAccounts);
                             break;
                     }
                 }

@@ -18,7 +18,7 @@ namespace EscolaOuline.Menus
         GenerateDefaultList generateDefaultList = new GenerateDefaultList();
         ProfessorsMenu professorsMenu = new ProfessorsMenu();
 
-        public void LoginScreenCall()
+        public void LoginScreenCall(List<StudentAccount> studentAccountLists, List<ProfessorAccount> professorsList)
         {
             Console.Clear();
 
@@ -60,9 +60,6 @@ namespace EscolaOuline.Menus
 
             //Generate Students and professors 
 
-            var studentAccountLists = generateDefaultList.GenerateStudentLists();
-            var professorsList = generateDefaultList.GenerateProfessorsLists();
-
             CatchAndCheckLogin();
 
             //Methods -->
@@ -85,7 +82,7 @@ namespace EscolaOuline.Menus
                 {
                     if (userName == student.UserName && password == student.Password)
                     {
-                        usersMenu.UsersMenuCall(student.UserName);
+                        usersMenu.UsersMenuCall(student.UserName, studentAccountLists, professorsList);
                     }
                 }
 

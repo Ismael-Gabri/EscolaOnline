@@ -14,7 +14,7 @@ namespace EscolaOuline.Services
         ProfessorsMenu professorsMenu = new ProfessorsMenu();
 
         //change the return type to StudentAccount
-        public void ShowStudentInformation(string name, List<StudentAccount> studentsList)
+        public void ShowStudentInformation(string name, List<StudentAccount> studentsList, List<ProfessorAccount> professorAccounts)
         {
             foreach(StudentAccount studentAccount in studentsList)
             {
@@ -34,7 +34,7 @@ namespace EscolaOuline.Services
                     Console.WriteLine();
                     Console.WriteLine("Pressione ENTER para retornar");
                     Console.ReadLine();
-                    usersMenu.UsersMenuCall(name);
+                    usersMenu.UsersMenuCall(name, studentsList, professorAccounts);
                 }
             }
         }
