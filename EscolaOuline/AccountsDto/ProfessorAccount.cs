@@ -8,12 +8,12 @@ namespace EscolaOuline.AccountsDto
 {
     class ProfessorAccount
     {
-        public ProfessorAccount(int id)
+        public ProfessorAccount()
         {
-            Id = id;
+            Id = Guid.NewGuid();
         }
         public string Name { get; set; }
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Password { get; set; }
         public string Ocupation { get; set; }
         public double Salary { get; set; }

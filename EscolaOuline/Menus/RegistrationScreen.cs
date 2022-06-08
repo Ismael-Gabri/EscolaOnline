@@ -98,7 +98,7 @@ public class StudentRegistration
         string course = Console.ReadLine();
         string senha = Console.ReadLine();
 
-        studentAccountList.Add(new StudentAccount(4)
+        studentAccountList.Add(new StudentAccount()
         {
             UserName = name,
             Age = Int32.Parse(age),

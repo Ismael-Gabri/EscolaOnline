@@ -1,4 +1,5 @@
-﻿using EscolaOuline.Services;
+﻿using EscolaOuline.AccountsDto;
+using EscolaOuline.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,9 @@ namespace EscolaOuline.Menus
     {
         static GenerateDefaultList generateDefaultList = new GenerateDefaultList();
         static AccountServices accountServices = new AccountServices();
+        static AccountManagement accountManagement = new AccountManagement();
         static LoginScreen loginScreen = new LoginScreen();
-        public void ProfessorsMenuCall(string name)
+        public void ProfessorsMenuCall(string name, List<StudentAccount> studentAccounts)
         {
             Console.Clear();
 
@@ -43,8 +45,8 @@ namespace EscolaOuline.Menus
             Console.WriteLine("---------------");
             Console.WriteLine();
             Console.WriteLine("[1] - Minhas informacoes ");
-            Console.WriteLine("[2] - Meus cursos ");
-            Console.WriteLine("[3] - Secretaria ");
+            Console.WriteLine("[2] - Meus Alunos ");
+            Console.WriteLine("[3] - Adicionar ou remover alunos ");
             Console.WriteLine();
             Console.WriteLine("[4] - Sair da conta");
             Console.WriteLine();
@@ -60,20 +62,20 @@ namespace EscolaOuline.Menus
                 {
                     Console.WriteLine("[!] Escolha Apenas uma das opções disponíveis [!]");
                     Thread.Sleep(3000);
-                    ProfessorsMenuCall(name);
+                    ProfessorsMenuCall(name, studentAccounts);
                 }
                 else
                 {
                     switch (answer)
                     {
                         case 1:
-                            accountServices.ShowProfessorInformation(name, profesorsAccountList);
+                            accountServices.ShowProfessorInformation(name, profesorsAccountList, studentAccounts);
                             break;
                         case 2:
-
+                            accountManagement.ShowStudentsList(name, studentAccounts);
                             break;
                         case 3:
-
+                            accountManagement.CreateStudentAccount(name, studentAccounts);
                             break;
                         case 4:
                             Console.SetCursorPosition(53, 19);

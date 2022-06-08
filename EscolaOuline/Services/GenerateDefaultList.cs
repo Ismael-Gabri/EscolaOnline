@@ -14,21 +14,21 @@ namespace EscolaOuline.Services
             var studentAccountList = new List<StudentAccount>();
 
             //Students List
-            studentAccountList.Add(new StudentAccount(1)
+            studentAccountList.Add(new StudentAccount()
             {
                 UserName = "Clebinho",
                 Password = "Fortnite22",
                 Curso = "Ciencia da computacao",
                 Turma = 1003
             });
-            studentAccountList.Add(new StudentAccount(2)
+            studentAccountList.Add(new StudentAccount()
             {
                 UserName = "Marcia",
                 Password = "Brigadeiro33",
                 Curso = "Engenharia",
                 Turma = 2002
             });
-            studentAccountList.Add(new StudentAccount(3)
+            studentAccountList.Add(new StudentAccount()
             {
                 UserName = "Pedro",
                 Curso = "Medicina",
@@ -43,7 +43,7 @@ namespace EscolaOuline.Services
             var ProfessorsList = new List<ProfessorAccount>();
 
             //Professors List
-            ProfessorsList.Add(new ProfessorAccount(1)
+            ProfessorsList.Add(new ProfessorAccount()
             {
                 Name = "Guilherme",
                 Password = "ChurrascoComCoca22",
@@ -51,14 +51,14 @@ namespace EscolaOuline.Services
                 Salary = 1200.00
             });
 
-            ProfessorsList.Add(new ProfessorAccount(2)
+            ProfessorsList.Add(new ProfessorAccount()
             {
                 Name = "Clebinho562",
                 Password = "MbK20",
                 Ocupation = "English teacher",
                 Salary = 1200.00
             });
-            ProfessorsList.Add(new ProfessorAccount(3)
+            ProfessorsList.Add(new ProfessorAccount()
             {
                 Name = "BoloComSorvete",
                 Password = "NumSeiCara06",
@@ -67,7 +67,7 @@ namespace EscolaOuline.Services
             });
 
             //Admin Acess
-            ProfessorsList.Add(new ProfessorAccount(000)
+            ProfessorsList.Add(new ProfessorAccount()
             {
                 Name = "IsmaelGabri",
                 Password = "z9)Fd6Ln_&D]6pVs",
