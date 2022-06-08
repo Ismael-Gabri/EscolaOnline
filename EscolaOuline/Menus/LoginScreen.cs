@@ -93,7 +93,7 @@ namespace EscolaOuline.Menus
                 {
                     if (userName == professor.Name && password == professor.Password)
                     {
-                        professorsMenu.ProfessorsMenuCall(professor.Name);
+                        professorsMenu.ProfessorsMenuCall(professor.Name, studentAccountLists);
                     }
                 }
             }

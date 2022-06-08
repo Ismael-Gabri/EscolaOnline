@@ -39,8 +39,9 @@ namespace EscolaOuline.Services
             }
         }
 
-        public void ShowProfessorInformation(string name, List<ProfessorAccount> professorsList)
+        public void ShowProfessorInformation(string name, List<ProfessorAccount> professorsList, List<StudentAccount> studentAccounts)
         {
+            Console.Clear();
             foreach (ProfessorAccount professorAccount in professorsList)
             {
                 if (professorAccount.Name == name)
@@ -59,7 +60,7 @@ namespace EscolaOuline.Services
                     Console.WriteLine();
                     Console.WriteLine("Pressione ENTER para retornar");
                     Console.ReadLine();
-                    professorsMenu.ProfessorsMenuCall(name);
+                    professorsMenu.ProfessorsMenuCall(name, studentAccounts);
                 }
             }
         }
