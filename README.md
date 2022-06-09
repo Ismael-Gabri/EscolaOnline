@@ -16,9 +16,9 @@ de com qual tipo de conta voce logar (Como professor ou como aluno), voce será 
 tera a capacidade de performar algumas funcoes como, adicionar ou remover um aluno do sistema, deixar mensagens em um tipo de mural para que os alunos possam ver
 (para os professores). E verificar as informacoes de sua conta, e checar o mural para ver se há alguma mensagem de um professor (Para os alunos).   
 
------------------------------------------
+
 Quer testar o App? Aqui vai alguns logins
------------------------------------------
+
 
 CONTAS DE ESTUDANTES disponíveis como padrao para login:
  ___________________       ___________________________    ______________________________
