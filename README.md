@@ -1,8 +1,8 @@
 # EscolaOuline
 
-================================
+--------------------------------
 Motivacao para a criacao do APP:
-================================
+--------------------------------
 
 --> Saudacos! Eu criei esse console app do zero com o intuito de testar alguns dos meus conhecimentos em OOP (Object Oriented Programming)
     dentro da linguagem C#, ele é um dos meus projetos que tenho a mostrar a voces.
