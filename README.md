@@ -20,10 +20,7 @@ tera a capacidade de performar algumas funcoes como, adicionar ou remover um alu
 Quer testar o App? Aqui vai alguns logins
 
 
-CONTAS DE ESTUDANTES disponíveis como padrao para login:
- ___________________       ___________________________    ______________________________
-| Usuário: Clebinho |     | Usuário: Marcia           |  | Usuário: Pedro               |
-| Senha: Fortnite22 |     | Senha: Brigadeiro33       |  | Senha: MedicinaPorDinheiro33 |
+CONTAS DE ESTUDANTES disponíveis como padrao para login: usuario: Clebinho , senha: Fortnite22 | Usuário: Marcia , Senha: Brigadeiro33 | Usuário: Pedro , Senha: MedicinaPorDinheiro33|
 
 
 CONTAS DE Professores disponíveis como padrao para login:
