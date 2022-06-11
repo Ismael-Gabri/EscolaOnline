@@ -22,7 +22,7 @@ Quer testar o App? Aqui vai alguns logins
 
 CONTAS DE ESTUDANTES disponíveis como padrao para login:
 
-usuario: Clebinho
+usuario: Clebinho |
 senha: Fortnite22 
 
 Usuário: Marcia
