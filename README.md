@@ -46,9 +46,8 @@ Senha: UmaSenhaMuitoSegura55
 
 CONTA ADMIN disponível para login:
 
-(Em desenvolvimento 09/06/2022)
-
 Usuário: IsmaelGabri |
 Senha: z9)Fd6Ln_&D]6pVs
 
-    
+
+(Esse console App está em desenvolvimento 11/06/2022)
