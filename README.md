@@ -25,29 +25,30 @@ CONTAS DE ESTUDANTES disponíveis como padrao para login:
 usuario: Clebinho |
 senha: Fortnite22 
 
-Usuário: Marcia
+Usuário: Marcia |
 Senha: Brigadeiro33
 
-Usuário: Pedro 
+Usuário: Pedro |
 Senha: MedicinaPorDinheiro33
 
 -----------------------------------------------------------
 CONTAS DE Professores disponíveis como padrao para login: 
 -----------------------------------------------------------
 
-Usuário: Guilherme
+Usuário: Guilherme |
 Senha: ChurrascoComCoca22
 
-Usuário: Clebinho562
+Usuário: Clebinho562 |
 Senha: MbK20
 
-Usuário: Marcus
+Usuário: Marcus |
 Senha: UmaSenhaMuitoSegura55
 
 CONTA ADMIN disponível para login:
 
 (Em desenvolvimento 09/06/2022)
 
-
+Usuário: IsmaelGabri |
+Senha: z9)Fd6Ln_&D]6pVs
 
     
