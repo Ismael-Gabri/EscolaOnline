@@ -32,7 +32,7 @@ Usuário: Pedro |
 Senha: MedicinaPorDinheiro33
 
 -----------------------------------------------------------
-CONTAS DE Professores disponíveis como padrao para login: 
+CONTAS DE PROFESSORES disponíveis como padrao para login: 
 -----------------------------------------------------------
 
 Usuário: Guilherme |
