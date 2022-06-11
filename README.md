@@ -1,4 +1,4 @@
-# EscolaOuline
+# EscolaOnline
 
 --------------------------------
 Motivacao para a criacao do APP:
