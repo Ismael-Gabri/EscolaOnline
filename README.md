@@ -19,8 +19,9 @@ tera a capacidade de performar algumas funcoes como, adicionar ou remover um alu
 
 Quer testar o App? Aqui vai alguns logins
 
-
+----------------------------------------------------------
 CONTAS DE ESTUDANTES disponíveis como padrao para login:
+----------------------------------------------------------
 
 usuario: Clebinho |
 senha: Fortnite22 
