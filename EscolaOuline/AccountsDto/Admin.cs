@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace EscolaOuline.AccountsDto
 {
-    class Admin
+    public class Admin
     {
-        public string User { get; set; }
+        public string Name { get; set; }
         public string Password { get; set; }
     }
 }

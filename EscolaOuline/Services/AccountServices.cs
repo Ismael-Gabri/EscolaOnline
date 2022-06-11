@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace EscolaOuline.Services
 {
-    class AccountServices
+    public class AccountServices
     {
         static UsersMenu usersMenu = new UsersMenu();
         ProfessorsMenu professorsMenu = new ProfessorsMenu();
 
         //change the return type to StudentAccount
-        public void ShowStudentInformation(string name, List<StudentAccount> studentsList, List<ProfessorAccount> professorAccounts)
+        public void ShowStudentInformation(string name, List<StudentAccount> studentsList, List<ProfessorAccount> professorAccounts, List<Admin> adminsList)
         {
             foreach(StudentAccount studentAccount in studentsList)
             {
@@ -34,12 +34,12 @@ namespace EscolaOuline.Services
                     Console.WriteLine();
                     Console.WriteLine("Pressione ENTER para retornar");
                     Console.ReadLine();
-                    usersMenu.UsersMenuCall(name, studentsList, professorAccounts);
+                    usersMenu.UsersMenuCall(name, studentsList, professorAccounts, adminsList);
                 }
             }
         }
 
-        public void ShowProfessorInformation(string name, List<ProfessorAccount> professorsList, List<StudentAccount> studentAccounts)
+        public void ShowProfessorInformation(string name, List<ProfessorAccount> professorsList, List<StudentAccount> studentAccounts, List<Admin> adminsList)
         {
             Console.Clear();
             foreach (ProfessorAccount professorAccount in professorsList)
@@ -60,7 +60,7 @@ namespace EscolaOuline.Services
                     Console.WriteLine();
                     Console.WriteLine("Pressione ENTER para retornar");
                     Console.ReadLine();
-                    professorsMenu.ProfessorsMenuCall(name, studentAccounts);
+                    professorsMenu.ProfessorsMenuCall(name, studentAccounts, adminsList);
                 }
             }
         }

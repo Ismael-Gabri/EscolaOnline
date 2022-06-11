@@ -32,7 +32,7 @@ namespace EscolaOuline.Services
             {
                 UserName = "Pedro",
                 Curso = "Medicina",
-                Password = "AcendeOlanca44",
+                Password = "MedicinaPorDinheiro33",
                 Turma = 3002
             });
 
@@ -60,22 +60,26 @@ namespace EscolaOuline.Services
             });
             ProfessorsList.Add(new ProfessorAccount()
             {
-                Name = "BoloComSorvete",
-                Password = "NumSeiCara06",
+                Name = "Marcus",
+                Password = "UmaSenhaMuitoSegura55",
                 Ocupation = "Biology teacher",
                 Salary = 1200.00,
             });
 
-            //Admin Acess
-            ProfessorsList.Add(new ProfessorAccount()
+            return ProfessorsList;
+        }
+
+        public List<Admin> GenerateAdminsList()
+        {
+            var adminsAccountsList = new List<Admin>();
+
+            adminsAccountsList.Add(new Admin()
             {
                 Name = "IsmaelGabri",
                 Password = "z9)Fd6Ln_&D]6pVs",
-                Ocupation = "Math teacher",
-                Salary = 1200.00,
             });
 
-            return ProfessorsList;
+            return adminsAccountsList;
         }
 
     }
