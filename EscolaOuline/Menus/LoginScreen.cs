@@ -17,8 +17,9 @@ namespace EscolaOuline.Menus
         UsersMenu usersMenu = new UsersMenu();
         GenerateDefaultList generateDefaultList = new GenerateDefaultList();
         ProfessorsMenu professorsMenu = new ProfessorsMenu();
+        AdminScreen adminScreen = new AdminScreen();
 
-        public void LoginScreenCall(List<StudentAccount> studentAccountLists, List<ProfessorAccount> professorsList)
+        public void LoginScreenCall(List<StudentAccount> studentAccountLists, List<ProfessorAccount> professorsList, List<Admin> adminsList)
         {
             Console.Clear();
 
@@ -39,24 +40,24 @@ namespace EscolaOuline.Menus
             bool loginScreenActive = true;
 
             
-            Console.WriteLine("                                  _______________________________________________                           ");
-            Console.WriteLine("                                 |                                             | |                           ");
-            Console.WriteLine("                                 |         ___________________________         | |                             ");
+            Console.WriteLine("                                  _______________________________________________                               ");
+            Console.WriteLine("                                 |                                             | |                              ");
+            Console.WriteLine("                                 |         ___________________________         | |                              ");
             Console.WriteLine("                                 |        |                           |        | |                              ");
             Console.WriteLine("                                 |        |      Tela de Login        |        | |                              ");
             Console.WriteLine("                                 |        |___________________________|        | |                              ");
             Console.WriteLine("                                 |                                             | |                              ");
             Console.WriteLine("                                 |                                             | |                              ");
-            Console.WriteLine("                                 |         Username:                           | |                             ");
+            Console.WriteLine("                                 |         Username:                           | |                              ");
             Console.WriteLine("                                 |         Password:                           | |                              ");
             Console.WriteLine("                                 |                                             | |                              ");
             Console.WriteLine("                                 |                                             | |                              ");
             Console.WriteLine("                                 |_____________________________________________| |                              ");
-            Console.WriteLine(@"                                 \______________________________________________\|                                                                           ");
-            Console.WriteLine("                                                                                                               ");
-            Console.WriteLine("                                                                                                               ");
-            Console.WriteLine("                                                                                                               ");
-            Console.WriteLine("                                                                                     --> press F12 to register                        ");
+            Console.WriteLine(@"                                 \______________________________________________\|                             ");
+            Console.WriteLine("                                                                                                                ");
+            Console.WriteLine("                                                                                                                ");
+            Console.WriteLine("                                                                                                                ");
+            Console.WriteLine("                                                                                     --> press F12 to register  ");
 
             //Generate Students and professors 
 
@@ -76,13 +77,13 @@ namespace EscolaOuline.Menus
 
                 Console.SetCursorPosition(43, 27);
 
-                //Validade login information and go to menu if correct -->
+                //Validade login information and go to the correct menu -->
 
                 foreach (StudentAccount student in studentAccountLists)
                 {
                     if (userName == student.UserName && password == student.Password)
                     {
-                        usersMenu.UsersMenuCall(student.UserName, studentAccountLists, professorsList);
+                        usersMenu.UsersMenuCall(student.UserName, studentAccountLists, professorsList, adminsList);
                     }
                 }
 
@@ -90,7 +91,17 @@ namespace EscolaOuline.Menus
                 {
                     if (userName == professor.Name && password == professor.Password)
                     {
-                        professorsMenu.ProfessorsMenuCall(professor.Name, studentAccountLists);
+                        professorsMenu.ProfessorsMenuCall(professor.Name, studentAccountLists, adminsList);
+                    }
+                }
+
+               //fazer o foreach admin
+
+               foreach (Admin admin in adminsList)
+                {
+                    if (userName == admin.Name && password == admin.Password)
+                    {
+                        adminScreen.AdminScreenCall(admin.Name, studentAccountLists, professorsList,  adminsList);
                     }
                 }
             }

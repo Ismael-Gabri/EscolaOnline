@@ -1,0 +1,49 @@
+[
+  {
+    "Name": "Guilherme",
+    "Id": null,
+    "Password": "ChurrascoComCoca22",
+    "Ocupation": "Math teacher",
+    "Salary": 1200,
+    "Contato": [
+      {
+        "Email": null,
+        "Telefone": null,
+        "Celular": null,
+        "TelefoneEmergencial": null
+      }
+    ]
+  },
+
+  {
+    "Name": "Clebinho562",
+    "Id": null,
+    "Password": "MbK20",
+    "Ocupation": "English teacher",
+    "Salary": 1200,
+    "Contato": [
+      {
+        "Email": null,
+        "Telefone": null,
+        "Celular": null,
+        "TelefoneEmergencial": null
+      }
+    ]
+  },
+
+  {
+    "Name": "BoloComSorvete",
+    "Id": null,
+    "Password": "NumSeiCara06",
+    "Ocupation": "Biology teacher",
+    "Salary": 1200,
+    "Contato": [
+      {
+        "Email": null,
+        "Telefone": null,
+        "Celular": null,
+        "TelefoneEmergencial": null
+      }
+    ]
+  }
+]
