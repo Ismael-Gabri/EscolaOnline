@@ -4,7 +4,7 @@
 Motivacao para a criacao do APP:
 --------------------------------
 
---> Saudacos! Eu criei esse console app do zero com o intuito de testar meus conhecimentos em OOP (Object Oriented Programming)
+--> Saudacoes! Eu criei esse console app do zero com o intuito de testar meus conhecimentos em OOP (Object Oriented Programming)
     dentro da linguagem C#, ele é um dos projetos que tenho a mostrar a voces.
    
 --------------------   
