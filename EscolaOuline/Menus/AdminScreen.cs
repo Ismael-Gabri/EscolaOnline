@@ -69,7 +69,7 @@ namespace EscolaOuline.Menus
                 {
                     Console.WriteLine("[!] Escolha Apenas uma das opções disponíveis [!]");
                     Thread.Sleep(3000);
-                    professorsMenu.ProfessorsMenuCall(name, studentAccounts, adminsList);
+                    professorsMenu.ProfessorsMenuCall(name, studentAccounts, professorAccounts, adminsList);
                 }
                 else
                 {

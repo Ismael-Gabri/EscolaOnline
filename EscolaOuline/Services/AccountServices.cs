@@ -18,17 +18,19 @@ namespace EscolaOuline.Services
         {
             foreach(StudentAccount studentAccount in studentsList)
             {
-                if(studentAccount.UserName == name)
+                if(studentAccount.Name == name)
                 {
+                    Console.Clear();
+
                     Console.WriteLine();
                     Console.WriteLine("Suas informacoes:");
                     Console.WriteLine();
                     Console.WriteLine("------------------------------");
                     Console.WriteLine($"ID: {studentAccount.Id}");
-                    Console.WriteLine($"Nome: {studentAccount.UserName}");
-                    Console.WriteLine($"Turma: {studentAccount.Turma}");
+                    Console.WriteLine($"Nome: {studentAccount.Name}");
+                    Console.WriteLine($"Turma: {studentAccount.Class}");
                     Console.WriteLine($"Senha: {studentAccount.Password}");
-                    Console.WriteLine($"Curso: {studentAccount.Curso}");
+                    Console.WriteLine($"Curso: {studentAccount.Course}");
                     Console.WriteLine("-----------------------------");
 
                     Console.WriteLine();
@@ -60,7 +62,7 @@ namespace EscolaOuline.Services
                     Console.WriteLine();
                     Console.WriteLine("Pressione ENTER para retornar");
                     Console.ReadLine();
-                    professorsMenu.ProfessorsMenuCall(name, studentAccounts, adminsList);
+                    professorsMenu.ProfessorsMenuCall(name, studentAccounts, professorsList, adminsList);
                 }
             }
         }

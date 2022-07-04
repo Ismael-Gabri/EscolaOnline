@@ -15,11 +15,9 @@ namespace EscolaOuline.Menus
         static AccountServices accountServices = new AccountServices();
         static AccountManagement accountManagement = new AccountManagement();
         static LoginScreen loginScreen = new LoginScreen();
-        public void ProfessorsMenuCall(string name, List<StudentAccount> studentAccounts, List<Admin> adminsList)
+        public void ProfessorsMenuCall(string name, List<StudentAccount> studentAccounts, List<ProfessorAccount> professorAccounts, List<Admin> adminsList)
         {
             Console.Clear();
-
-            var profesorsAccountList = generateDefaultList.GenerateProfessorsLists();
 
             string title = @"
                                                                                                     
@@ -63,27 +61,27 @@ namespace EscolaOuline.Menus
                 {
                     Console.WriteLine("[!] Escolha Apenas uma das opções disponíveis [!]");
                     Thread.Sleep(3000);
-                    ProfessorsMenuCall(name, studentAccounts, adminsList);
+                    ProfessorsMenuCall(name, studentAccounts, professorAccounts,adminsList);
                 }
                 else
                 {
                     switch (answer)
                     {
                         case 1:
-                            accountServices.ShowProfessorInformation(name, profesorsAccountList, studentAccounts, adminsList);
+                            accountServices.ShowProfessorInformation(name, professorAccounts, studentAccounts, adminsList);
                             break;
                         case 2:
-                            accountManagement.ShowStudentsList(name, studentAccounts, adminsList, profesorsAccountList);
+                            accountManagement.ShowStudentsList(name, studentAccounts, adminsList, professorAccounts);
                             break;
                         case 3:
-                            accountManagement.CreateStudentAccount(name, studentAccounts, adminsList, profesorsAccountList);
+                            accountManagement.CreateStudentAccount(name, studentAccounts, adminsList, professorAccounts);
                             break;
                         case 4:
-                            accountManagement.DeleteStudentAccount(name, studentAccounts, adminsList, profesorsAccountList);
+                            accountManagement.DeleteStudentAccount(name, studentAccounts, adminsList, professorAccounts);
                             break;
                         case 5:
                             Console.SetCursorPosition(53, 19);
-                            loginScreen.LoginScreenCall(studentAccounts, profesorsAccountList, adminsList);
+                            loginScreen.LoginScreenCall(studentAccounts, professorAccounts, adminsList);
                             break;
                     }
                 }

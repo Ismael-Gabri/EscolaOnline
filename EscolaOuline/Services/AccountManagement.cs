@@ -26,19 +26,19 @@ namespace EscolaOuline.Services
             foreach (StudentAccount student in studentAccounts)
             {
                 Console.WriteLine();
-                Console.WriteLine($"{student.UserName.ToUpper()}");
+                Console.WriteLine($"{student.Name.ToUpper()}");
                 Console.WriteLine("------------------------------");
                 Console.WriteLine($"ID: {student.Id}");
-                Console.WriteLine($"Nome: {student.UserName}");
-                Console.WriteLine($"Curso: {student.Curso}");
-                Console.WriteLine($"Turma: {student.Turma}");
+                Console.WriteLine($"Nome: {student.Name}");
+                Console.WriteLine($"Curso: {student.Course}");
+                Console.WriteLine($"Turma: {student.Class}");
                 Console.WriteLine("------------------------------");
             }
 
             Console.WriteLine();
             Console.WriteLine("Pressione ENTER para retornar...");
             Console.ReadLine();
-            adminScreen.AdminScreenCall(Professorname, studentAccounts, professorAccounts, adminsList);
+            professorsMenu.ProfessorsMenuCall(Professorname, studentAccounts, professorAccounts, adminsList);
         }
 
         public void CreateStudentAccount(string Professorname, List<StudentAccount> studentAccounts, List<Admin> adminsList, List<ProfessorAccount> professorAccounts)
@@ -93,10 +93,10 @@ namespace EscolaOuline.Services
 
             studentAccounts.Add(new StudentAccount()
             {
-                UserName = nome,
+                Name = nome,
                 Password = senha,
-                Turma = turma,
-                Curso = curso
+                Class = turma,
+                Course = curso
             });
 
             Console.WriteLine();
@@ -166,7 +166,7 @@ namespace EscolaOuline.Services
 
             foreach (StudentAccount student in studentAccounts)
             {
-                if (student.UserName == nome && student.Password == senha && student.Turma == turma && student.Curso == curso)
+                if (student.Name == nome && student.Password == senha && student.Class == turma && student.Course == curso)
                 {
                     Console.WriteLine();
                     studentAccounts.Remove(student);
