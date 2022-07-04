@@ -8,6 +8,11 @@ namespace EscolaOuline.AccountsDto
 {
     public class Admin
     {
+        public Admin()
+        {
+            Id = Guid.NewGuid();
+        }
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Password { get; set; }
     }

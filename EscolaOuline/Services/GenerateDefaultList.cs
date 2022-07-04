@@ -16,24 +16,24 @@ namespace EscolaOuline.Services
             //Students List
             studentAccountList.Add(new StudentAccount()
             {
-                UserName = "Clebinho",
+                Name = "Clebinho",
                 Password = "Fortnite22",
-                Curso = "Ciencia da computacao",
-                Turma = 1003
+                Course = "Ciencia da computacao",
+                Class = 1003
             });
             studentAccountList.Add(new StudentAccount()
             {
-                UserName = "Marcia",
+                Name = "Marcia",
                 Password = "Brigadeiro33",
-                Curso = "Engenharia",
-                Turma = 2002
+                Course = "Engenharia",
+                Class = 2002
             });
             studentAccountList.Add(new StudentAccount()
             {
-                UserName = "Pedro",
-                Curso = "Medicina",
+                Name = "Pedro",
+                Course = "Medicina",
                 Password = "MedicinaPorDinheiro33",
-                Turma = 3002
+                Class = 3002
             });
 
             return studentAccountList;

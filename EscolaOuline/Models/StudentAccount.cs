@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace EscolaOuline.AccountsDto
 {
-    public class ProfessorAccount
+    public class StudentAccount
     {
-        public ProfessorAccount()
+        public StudentAccount()
         {
             Id = Guid.NewGuid();
         }
-        public string Name { get; set; }
         public Guid Id { get; set; }
+        public string Name { get; set; }
         public string Password { get; set; }
-        public string Ocupation { get; set; }
-        public double Salary { get; set; }
-        public Contact Contato { get; set; }
+        public int Age { get; set; }
+        public int Class { get; set; }
+        public string Course { get; set; }
+        public Contact Contact { get; set; }
     }
 }

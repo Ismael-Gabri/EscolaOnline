@@ -81,9 +81,9 @@ namespace EscolaOuline.Menus
 
                 foreach (StudentAccount student in studentAccountLists)
                 {
-                    if (userName == student.UserName && password == student.Password)
+                    if (userName == student.Name && password == student.Password)
                     {
-                        usersMenu.UsersMenuCall(student.UserName, studentAccountLists, professorsList, adminsList);
+                        usersMenu.UsersMenuCall(student.Name, studentAccountLists, professorsList, adminsList);
                     }
                 }
 
@@ -91,7 +91,7 @@ namespace EscolaOuline.Menus
                 {
                     if (userName == professor.Name && password == professor.Password)
                     {
-                        professorsMenu.ProfessorsMenuCall(professor.Name, studentAccountLists, adminsList);
+                        professorsMenu.ProfessorsMenuCall(professor.Name, studentAccountLists, professorsList, adminsList);
                     }
                 }
 

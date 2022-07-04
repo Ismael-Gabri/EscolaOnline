@@ -100,9 +100,9 @@ public class StudentRegistration
 
         studentAccountList.Add(new StudentAccount()
         {
-            UserName = name,
+            Name = name,
             Age = Int32.Parse(age),
-            Curso = course,
+            Course = course,
             Password = senha,
         });
     }
