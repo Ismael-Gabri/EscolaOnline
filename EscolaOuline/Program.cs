@@ -20,7 +20,7 @@ namespace EscolaOuline
               
      Eu de amanha, resolver o problema da criacao de estudantes no metodo dos professores
                 
-     1- Adaptadondo os métodos de CreateStudentAccount & DeleteStudentAccount para atualizar no Banco de Dados quando realizado
+     1 - Consertando Bugs na tela
 
     */
     public class Program

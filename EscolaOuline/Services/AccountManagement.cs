@@ -16,7 +16,7 @@ namespace EscolaOuline.Services
         static ProfessorsMenu professorsMenu = new ProfessorsMenu();
         static AdminScreen adminScreen = new AdminScreen();
 
-        public void ListStudent(string Professorname, List<Student> studentAccounts, List<Admin> adminsList, List<Professor> professorAccounts, SqlConnection connection)
+        public void ListStudent(string UserName, List<Student> studentAccounts, List<Admin> adminsList, List<Professor> professorAccounts, SqlConnection connection)
         {
             var alunos = connection.Query<Student>("SELECT [Id], [Name], [Age], [Class], [Course] FROM [Student]");
 
@@ -41,11 +41,26 @@ namespace EscolaOuline.Services
             Console.WriteLine();
             Console.WriteLine("Pressione ENTER para retornar...");
             Console.ReadLine();
-            professorsMenu.ProfessorsMenuCall(Professorname, studentAccounts, professorAccounts, adminsList, connection);
+
+            foreach (Professor professor in professorAccounts)
+            {
+                if (UserName == professor.Name)
+                {
+                    professorsMenu.ProfessorsMenuCall(professor.Name, studentAccounts, professorAccounts, adminsList, connection);
+                }
+            }
+
+            foreach (Admin admin in adminsList)
+            {
+                if (UserName == admin.Name)
+                {
+                    adminScreen.AdminScreenCall(admin.Name, studentAccounts, professorAccounts, adminsList, connection);
+                }
+            }
         }
 
         //A FAZER
-        public void CreateStudentAccount(string Professorname, List<Student> studentAccounts, List<Admin> adminsList, List<Professor> professorAccounts, SqlConnection connection)
+        public void CreateStudentAccount(string UserName, List<Student> studentAccounts, List<Admin> adminsList, List<Professor> professorAccounts, SqlConnection connection)
         {
 
             Console.Clear();
@@ -136,7 +151,21 @@ namespace EscolaOuline.Services
                 Console.ReadLine();
             }
 
-            adminScreen.AdminScreenCall(Professorname, studentAccounts, professorAccounts, adminsList, connection);
+            foreach (Professor professor in professorAccounts)
+            {
+                if (UserName == professor.Name)
+                {
+                    professorsMenu.ProfessorsMenuCall(professor.Name, studentAccounts, professorAccounts, adminsList, connection);
+                }
+            }
+
+            foreach (Admin admin in adminsList)
+            {
+                if (UserName == admin.Name)
+                {
+                    adminScreen.AdminScreenCall(admin.Name, studentAccounts, professorAccounts, adminsList, connection);
+                }
+            }
         }
 
         //A FAZER
