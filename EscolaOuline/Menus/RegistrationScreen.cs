@@ -77,7 +77,7 @@ public class StudentRegistration
     //colocar o retorno como StudentAccount
     public void RegisterStudentInSystem()
     {
-        var studentAccountList = new List<StudentAccount>();
+        var studentAccountList = new List<Student>();
 
         Console.WriteLine("                                  _______________________________________________                               ");
         Console.WriteLine("                                 |                                             | |                              ");
@@ -98,7 +98,7 @@ public class StudentRegistration
         string course = Console.ReadLine();
         string senha = Console.ReadLine();
 
-        studentAccountList.Add(new StudentAccount()
+        studentAccountList.Add(new Student()
         {
             Name = name,
             Age = Int32.Parse(age),

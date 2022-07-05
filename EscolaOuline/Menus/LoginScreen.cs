@@ -8,6 +8,7 @@ using EscolaOuline;
 using EscolaOuline.Menus;
 using System.Threading;
 using EscolaOuline.Services;
+using Microsoft.Data.SqlClient;
 
 namespace EscolaOuline.Menus
 {
@@ -19,7 +20,7 @@ namespace EscolaOuline.Menus
         ProfessorsMenu professorsMenu = new ProfessorsMenu();
         AdminScreen adminScreen = new AdminScreen();
 
-        public void LoginScreenCall(List<StudentAccount> studentAccountLists, List<ProfessorAccount> professorsList, List<Admin> adminsList)
+        public void LoginScreenCall(List<Student> studentAccountLists, List<Professor> professorsList, List<Admin> adminsList, SqlConnection connectionString)
         {
             Console.Clear();
 
@@ -36,8 +37,6 @@ namespace EscolaOuline.Menus
 ";
 
             Console.WriteLine(title);
-
-            bool loginScreenActive = true;
 
             
             Console.WriteLine("                                  _______________________________________________                               ");
@@ -79,34 +78,32 @@ namespace EscolaOuline.Menus
 
                 //Validade login information and go to the correct menu -->
 
-                foreach (StudentAccount student in studentAccountLists)
+                foreach (Student student in studentAccountLists)
                 {
                     if (userName == student.Name && password == student.Password)
                     {
-                        usersMenu.UsersMenuCall(student.Name, studentAccountLists, professorsList, adminsList);
+                        usersMenu.UsersMenuCall(student.Name, studentAccountLists, professorsList, adminsList, connectionString);
                     }
                 }
 
-                foreach (ProfessorAccount professor in professorsList)
+                foreach (Professor professor in professorsList)
                 {
                     if (userName == professor.Name && password == professor.Password)
                     {
-                        professorsMenu.ProfessorsMenuCall(professor.Name, studentAccountLists, professorsList, adminsList);
+                        professorsMenu.ProfessorsMenuCall(professor.Name, studentAccountLists, professorsList, adminsList, connectionString);
                     }
                 }
-
-               //fazer o foreach admin
 
                foreach (Admin admin in adminsList)
                 {
                     if (userName == admin.Name && password == admin.Password)
                     {
-                        adminScreen.AdminScreenCall(admin.Name, studentAccountLists, professorsList,  adminsList);
+                        adminScreen.AdminScreenCall(admin.Name, studentAccountLists, professorsList,  adminsList, connectionString);
                     }
                 }
             }
 
-            void ToRegistrate()
+           /* void ToRegistrate()
             {
                 do
                 {
@@ -120,6 +117,8 @@ namespace EscolaOuline.Menus
                 }
                 while (loginScreenActive);
             }
+
+            */
         }
     }
 }

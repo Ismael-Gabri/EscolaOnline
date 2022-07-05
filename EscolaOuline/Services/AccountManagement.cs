@@ -1,5 +1,7 @@
-﻿using EscolaOuline.AccountsDto;
+﻿using Dapper;
+using EscolaOuline.AccountsDto;
 using EscolaOuline.Menus;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +14,11 @@ namespace EscolaOuline.Services
     {
         static GenerateDefaultList generateDefaultList = new GenerateDefaultList();
         static ProfessorsMenu professorsMenu = new ProfessorsMenu();
-        static AdminScreen adminScreen = new AdminScreen()
-;        //Professor Menu features -->
-        public void ShowStudentsList(string Professorname, List<StudentAccount> studentAccounts, List<Admin> adminsList, List<ProfessorAccount> professorAccounts)
+        static AdminScreen adminScreen = new AdminScreen();
+
+        public void ListStudent(string Professorname, List<Student> studentAccounts, List<Admin> adminsList, List<Professor> professorAccounts, SqlConnection connection)
         {
+            var alunos = connection.Query<Student>("SELECT [Id], [Name], [Age], [Class], [Course] FROM [Student]");
 
             Console.Clear();
             Console.WriteLine();
@@ -23,25 +26,26 @@ namespace EscolaOuline.Services
             Console.WriteLine("Lista de alunos:");
             Console.WriteLine("================");
 
-            foreach (StudentAccount student in studentAccounts)
+            foreach (var aluno in alunos)
             {
                 Console.WriteLine();
-                Console.WriteLine($"{student.Name.ToUpper()}");
+                Console.WriteLine($"{aluno.Name.ToUpper()}");
                 Console.WriteLine("------------------------------");
-                Console.WriteLine($"ID: {student.Id}");
-                Console.WriteLine($"Nome: {student.Name}");
-                Console.WriteLine($"Curso: {student.Course}");
-                Console.WriteLine($"Turma: {student.Class}");
+                Console.WriteLine($"ID: {aluno.Id}");
+                Console.WriteLine($"Nome: {aluno.Name}");
+                Console.WriteLine($"Curso: {aluno.Course}");
+                Console.WriteLine($"Turma: {aluno.Class}");
                 Console.WriteLine("------------------------------");
             }
 
             Console.WriteLine();
             Console.WriteLine("Pressione ENTER para retornar...");
             Console.ReadLine();
-            professorsMenu.ProfessorsMenuCall(Professorname, studentAccounts, professorAccounts, adminsList);
+            professorsMenu.ProfessorsMenuCall(Professorname, studentAccounts, professorAccounts, adminsList, connection);
         }
 
-        public void CreateStudentAccount(string Professorname, List<StudentAccount> studentAccounts, List<Admin> adminsList, List<ProfessorAccount> professorAccounts)
+        //A FAZER
+        public void CreateStudentAccount(string Professorname, List<Student> studentAccounts, List<Admin> adminsList, List<Professor> professorAccounts, SqlConnection connection)
         {
 
             Console.Clear();
@@ -91,26 +95,52 @@ namespace EscolaOuline.Services
             Console.SetCursorPosition(50, 24);
             string curso = Console.ReadLine();
 
-            studentAccounts.Add(new StudentAccount()
+            Student newStudent = new Student();
+            newStudent.Id = Guid.NewGuid();
+            newStudent.Name = nome;
+            newStudent.Password = senha;
+            newStudent.Age = 21;
+            newStudent.Class = turma;
+            newStudent.Course = curso;
+
+            const string connectionString = "Server=localhost,1433;Database=EscolaOnline;User ID=sa;Password=1q2w3e4r@#$";
+
+            var insertSql = @"INSERT INTO [Student] VALUES(
+
+                    @Id, 
+                    @Name,
+                    @Password, 
+                    @Age,
+                    @Class,
+                    @Course
+                )";
+
+            using (var Currentconnection = new SqlConnection(connectionString)) //Open connection
             {
-                Name = nome,
-                Password = senha,
-                Class = turma,
-                Course = curso
-            });
+                var rows = connection.Execute(insertSql, new 
+                {
+                    newStudent.Id,
+                    newStudent.Name,
+                    newStudent.Password,
+                    newStudent.Age,
+                    newStudent.Class,
+                    newStudent.Course
+                });
 
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("Estudante criado com sucesso, Vá a aba LISTA DE ALUNOS para checar!");
-            Console.WriteLine();
-            Console.WriteLine("Pressione ENTER para retornar...");
-            Console.ReadLine();
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine($"{rows} Estudante(s) criado(s) com sucesso, Vá a aba LISTA DE ALUNOS para checar!");
+                Console.WriteLine();
+                Console.WriteLine("Pressione ENTER para retornar...");
+                Console.ReadLine();
+            }
 
-            adminScreen.AdminScreenCall(Professorname, studentAccounts, professorAccounts, adminsList);
+            adminScreen.AdminScreenCall(Professorname, studentAccounts, professorAccounts, adminsList, connection);
         }
 
-        public void DeleteStudentAccount(string professorName, List<StudentAccount> studentAccounts, List<Admin> adminsList, List<ProfessorAccount> professorAccounts)
+        //A FAZER
+        public void DeleteStudentAccount(string professorName, List<Student> studentAccounts, List<Admin> adminsList, List<Professor> professorAccounts, SqlConnection connection)
         {
             Console.Clear();
 
@@ -148,6 +178,8 @@ namespace EscolaOuline.Services
             Console.WriteLine();
             Console.WriteLine("                                                                                              <---- Retornar F12");
 
+            string deleteStudentSql = "DELETE FROM [Student] WHERE [Name] = @Nome";
+
 
             Console.SetCursorPosition(49, 18);
             string nome = Console.ReadLine();
@@ -158,37 +190,32 @@ namespace EscolaOuline.Services
             Console.SetCursorPosition(50, 21);
             string curso = Console.ReadLine();
 
+            connection.Execute(deleteStudentSql, new {
+                nome
+            });
+
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
-            Console.WriteLine("Digite a palavra --> DELETAR <-- para confirmar");
+            Console.WriteLine("Aperte --> ENTER <-- para continuar");
             string confirmationOfDeletion = Console.ReadLine();
 
-            foreach (StudentAccount student in studentAccounts)
-            {
-                if (student.Name == nome && student.Password == senha && student.Class == turma && student.Course == curso)
-                {
-                    Console.WriteLine();
-                    studentAccounts.Remove(student);
-                    Console.WriteLine("Aluno removido com sucesso");
-
-                    Console.WriteLine("Pressione ENTER para retornar ao menu...");
-                    Console.ReadLine();
-
-                    adminScreen.AdminScreenCall(professorName, studentAccounts, professorAccounts, adminsList);
-                }
-            }
+            adminScreen.AdminScreenCall(professorName, studentAccounts, professorAccounts, adminsList, connection);
         }
 
-        public void ShowProfessorsList(string AdminName, List<ProfessorAccount> professorAccounts, List<StudentAccount> studentAccounts, List<Admin> adminsList)
+
+        //A FAZER
+        public void ShowProfessorsList(string AdminName, List<Professor> professorAccounts, List<Student> studentAccounts, List<Admin> adminsList, SqlConnection connection)
         {
+            var professores = connection.Query<Professor>("SELECT [Id], [Name], [Ocupation], [Salary] FROM [Professor]");
+
             Console.Clear();
             Console.WriteLine();
-            Console.WriteLine("================");
-            Console.WriteLine("Lista de alunos:");
-            Console.WriteLine("================");
+            Console.WriteLine("=====================");
+            Console.WriteLine("Lista de Professores:");
+            Console.WriteLine("=====================");
 
-            foreach (ProfessorAccount professor in professorAccounts)
+            foreach (var professor in professores)
             {
                 Console.WriteLine();
                 Console.WriteLine($"{professor.Name.ToUpper()}");
@@ -203,10 +230,12 @@ namespace EscolaOuline.Services
             Console.WriteLine();
             Console.WriteLine("Pressione ENTER para retornar...");
             Console.ReadLine();
-            adminScreen.AdminScreenCall(AdminName, studentAccounts, professorAccounts, adminsList);
+            adminScreen.AdminScreenCall(AdminName, studentAccounts, professorAccounts, adminsList, connection);
         }
 
-        public void CreateProfessorAccount(string AdminName, List<StudentAccount> studentAccounts, List<Admin> adminsList, List<ProfessorAccount> professorAccounts)
+
+        //A FAZER
+        public void CreateProfessorAccount(string AdminName, List<Student> studentAccounts, List<Admin> adminsList, List<Professor> professorAccounts, SqlConnection connection)
         {
 
             Console.Clear();
@@ -254,28 +283,46 @@ namespace EscolaOuline.Services
             Console.SetCursorPosition(53, 23);
             string ocupacao = Console.ReadLine();
             Console.SetCursorPosition(52, 24);
-            double Salario = Convert.ToDouble(Console.ReadLine());
+            double salario = Convert.ToDouble(Console.ReadLine());
 
-            professorAccounts.Add(new ProfessorAccount()
-            {
-                Name = nome,
-                Password = senha,
-                Ocupation = ocupacao,
-                Salary = Salario
+            Professor professor = new Professor();
+            professor.Id = Guid.NewGuid();
+            professor.Name = nome;
+            professor.Password = senha;
+            professor.Ocupation = ocupacao;
+            professor.Salary = salario;
+
+
+            var insertProfessorSql = @"INSERT INTO [Professor] VALUES(
+
+                    @Id, 
+                    @Name,
+                    @Password, 
+                    @Ocupation,
+                    @Salary
+                )";
+
+            var rows = connection.Execute(insertProfessorSql, new {
+                professor.Id,
+                professor.Name,
+                professor.Password,
+                professor.Ocupation,
+                professor.Salary
             });
 
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
-            Console.WriteLine("Professor criado com sucesso, Vá a aba LISTA DE PROFESSORES para checar!");
+            Console.WriteLine($"{rows} Professor(es) criado(s) com sucesso, Vá a aba LISTA DE PROFESSORES para checar!");
             Console.WriteLine();
             Console.WriteLine("Pressione ENTER para retornar...");
             Console.ReadLine();
 
-            adminScreen.AdminScreenCall(AdminName, studentAccounts, professorAccounts, adminsList);
+            adminScreen.AdminScreenCall(AdminName, studentAccounts, professorAccounts, adminsList, connection);
         }
 
-        public void DeleteProfessorAccount(string AdminName, List<StudentAccount> studentAccounts, List<Admin> adminsList, List<ProfessorAccount> professorAccounts)
+        //A FAZER
+        public void DeleteProfessorAccount(string AdminName, List<Student> studentAccounts, List<Admin> adminsList, List<Professor> professorAccounts, SqlConnection connection)
         {
             Console.Clear();
 
@@ -323,6 +370,13 @@ namespace EscolaOuline.Services
             Console.SetCursorPosition(52, 21);
             double salario = Convert.ToDouble(Console.ReadLine());
 
+            string deleteStudentSql = "DELETE FROM [Professor] WHERE [Name] = @Nome";
+
+            var rows = connection.Execute(deleteStudentSql, new
+            {
+                nome
+            });
+
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine();
@@ -330,19 +384,7 @@ namespace EscolaOuline.Services
             string confirmationOfDeletion = Console.ReadLine();
             Console.WriteLine();
 
-            foreach (ProfessorAccount professor in professorAccounts)
-            {
-                if (professor.Name == nome && professor.Password == senha && professor.Ocupation == ocupacao && professor.Salary == salario)
-                {
-                    professorAccounts.Remove(professor);
-                    Console.WriteLine("Professor removido com sucesso");
-
-                    Console.WriteLine("Pressione ENTER para retornar ao menu...");
-                    Console.ReadLine();
-
-                    adminScreen.AdminScreenCall(nome, studentAccounts, professorAccounts, adminsList);
-                }
-            }
+            adminScreen.AdminScreenCall(nome, studentAccounts, professorAccounts, adminsList, connection);
         }
     }
 }
