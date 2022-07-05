@@ -9,26 +9,26 @@ namespace EscolaOuline.Services
 {
     class GenerateDefaultList
     {
-        public List<StudentAccount> GenerateStudentLists()
+        public List<Student> GenerateStudentLists()
         {
-            var studentAccountList = new List<StudentAccount>();
+            var studentAccountList = new List<Student>();
 
             //Students List
-            studentAccountList.Add(new StudentAccount()
+            studentAccountList.Add(new Student()
             {
                 Name = "Clebinho",
                 Password = "Fortnite22",
                 Course = "Ciencia da computacao",
                 Class = 1003
             });
-            studentAccountList.Add(new StudentAccount()
+            studentAccountList.Add(new Student()
             {
                 Name = "Marcia",
                 Password = "Brigadeiro33",
                 Course = "Engenharia",
                 Class = 2002
             });
-            studentAccountList.Add(new StudentAccount()
+            studentAccountList.Add(new Student()
             {
                 Name = "Pedro",
                 Course = "Medicina",
@@ -38,12 +38,12 @@ namespace EscolaOuline.Services
 
             return studentAccountList;
         }
-        public List<ProfessorAccount> GenerateProfessorsLists()
+        public List<Professor> GenerateProfessorsLists()
         {
-            var ProfessorsList = new List<ProfessorAccount>();
+            var ProfessorsList = new List<Professor>();
 
             //Professors List
-            ProfessorsList.Add(new ProfessorAccount()
+            ProfessorsList.Add(new Professor()
             {
                 Name = "Guilherme",
                 Password = "ChurrascoComCoca22",
@@ -51,14 +51,14 @@ namespace EscolaOuline.Services
                 Salary = 1200.00
             });
 
-            ProfessorsList.Add(new ProfessorAccount()
+            ProfessorsList.Add(new Professor()
             {
                 Name = "Clebinho562",
                 Password = "MbK20",
                 Ocupation = "English teacher",
                 Salary = 1200.00
             });
-            ProfessorsList.Add(new ProfessorAccount()
+            ProfessorsList.Add(new Professor()
             {
                 Name = "Marcus",
                 Password = "UmaSenhaMuitoSegura55",

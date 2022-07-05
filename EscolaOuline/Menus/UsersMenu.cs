@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using EscolaOuline.Services;
 using EscolaOuline.AccountsDto;
+using Microsoft.Data.SqlClient;
 
 namespace EscolaOuline.Menus
 {
@@ -14,7 +15,7 @@ namespace EscolaOuline.Menus
         static AccountServices accountServices = new AccountServices();
         static LoginScreen loginScreen = new LoginScreen();
         static GenerateDefaultList generateDefaultList = new GenerateDefaultList();
-        public void UsersMenuCall(string user, List<StudentAccount> studentAccounts, List<ProfessorAccount> professorAccounts, List<Admin> adminsList)
+        public void UsersMenuCall(string user, List<Student> studentAccounts, List<Professor> professorAccounts, List<Admin> adminsList, SqlConnection connectionString)
         {
        
 
@@ -56,14 +57,14 @@ namespace EscolaOuline.Menus
                 {
                     Console.WriteLine("[!] Escolha Apenas uma das opções disponíveis [!]");
                     Thread.Sleep(3000);
-                    UsersMenuCall(user, studentAccounts, professorAccounts, adminsList);
+                    UsersMenuCall(user, studentAccounts, professorAccounts, adminsList, connectionString);
                 }
                 else
                 {
                     switch (answer)
                     {
                         case 1:
-                            accountServices.ShowStudentInformation(user, studentAccounts, professorAccounts, adminsList);
+                            accountServices.ShowStudentInformation(user, studentAccounts, professorAccounts, adminsList, connectionString);
                             break;
                         case 2:
 
@@ -73,7 +74,7 @@ namespace EscolaOuline.Menus
                             break;
                         case 4:
                             Console.SetCursorPosition(53, 19);
-                            loginScreen.LoginScreenCall(studentAccounts, professorAccounts, adminsList);
+                            loginScreen.LoginScreenCall(studentAccounts, professorAccounts, adminsList, connectionString);
                             break;
                     }
                 }

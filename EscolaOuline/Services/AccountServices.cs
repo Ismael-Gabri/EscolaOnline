@@ -1,5 +1,7 @@
-﻿using EscolaOuline.AccountsDto;
+﻿using Dapper;
+using EscolaOuline.AccountsDto;
 using EscolaOuline.Menus;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +16,9 @@ namespace EscolaOuline.Services
         ProfessorsMenu professorsMenu = new ProfessorsMenu();
 
         //change the return type to StudentAccount
-        public void ShowStudentInformation(string name, List<StudentAccount> studentsList, List<ProfessorAccount> professorAccounts, List<Admin> adminsList)
+        public void ShowStudentInformation(string name, List<Student> studentsList, List<Professor> professorAccounts, List<Admin> adminsList, SqlConnection connectionString)
         {
-            foreach(StudentAccount studentAccount in studentsList)
+            foreach(Student studentAccount in studentsList)
             {
                 if(studentAccount.Name == name)
                 {
@@ -36,15 +38,15 @@ namespace EscolaOuline.Services
                     Console.WriteLine();
                     Console.WriteLine("Pressione ENTER para retornar");
                     Console.ReadLine();
-                    usersMenu.UsersMenuCall(name, studentsList, professorAccounts, adminsList);
+                    usersMenu.UsersMenuCall(name, studentsList, professorAccounts, adminsList, connectionString);
                 }
             }
         }
 
-        public void ShowProfessorInformation(string name, List<ProfessorAccount> professorsList, List<StudentAccount> studentAccounts, List<Admin> adminsList)
+        public void ShowProfessorInformation(string name, List<Professor> professorsList, List<Student> studentAccounts, List<Admin> adminsList, SqlConnection connectionString )
         {
             Console.Clear();
-            foreach (ProfessorAccount professorAccount in professorsList)
+            foreach (Professor professorAccount in professorsList)
             {
                 if (professorAccount.Name == name)
                 {
@@ -62,9 +64,10 @@ namespace EscolaOuline.Services
                     Console.WriteLine();
                     Console.WriteLine("Pressione ENTER para retornar");
                     Console.ReadLine();
-                    professorsMenu.ProfessorsMenuCall(name, studentAccounts, professorsList, adminsList);
+                    professorsMenu.ProfessorsMenuCall(name, studentAccounts, professorsList, adminsList, connectionString);
                 }
             }
         }
     }
 }
+
