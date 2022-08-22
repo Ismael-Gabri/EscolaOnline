@@ -18,6 +18,12 @@ tera a capacidade de performar algumas funcoes como, adicionar ou remover um alu
 
 Quer testar o App? Aqui vai alguns logins
 
+----------------------------   
+Como Gerar o banco de dados?
+----------------------------
+
+O script necessario para gerar o banco de dados com alguns logins ja criados esta em https://github.com/Ismael-Gabri/EscolaOnlineConsole.Database
+
 ----------------------------------------------------------
 CONTAS DE ESTUDANTES disponíveis como padrao para login:
 ----------------------------------------------------------
