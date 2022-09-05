@@ -18,7 +18,7 @@ namespace EscolaOuline.Services
 
         public void ListStudent(string UserName, List<Student> studentAccounts, List<Admin> adminsList, List<Professor> professorAccounts, SqlConnection connection)
         {
-            var alunos = connection.Query<Student>("SELECT [Id], [Name], [Age], [Class], [Course] FROM [Student]");
+            var alunos = connection.Query<Student>("SELECT [Id], [Name], [Age], [ClassNumber], [Course] FROM [Student]");
 
             Console.Clear();
             Console.WriteLine();
@@ -34,7 +34,7 @@ namespace EscolaOuline.Services
                 Console.WriteLine($"ID: {aluno.Id}");
                 Console.WriteLine($"Nome: {aluno.Name}");
                 Console.WriteLine($"Curso: {aluno.Course}");
-                Console.WriteLine($"Turma: {aluno.Class}");
+                Console.WriteLine($"Turma: {aluno.ClassNumber}");
                 Console.WriteLine("------------------------------");
             }
 
@@ -113,9 +113,9 @@ namespace EscolaOuline.Services
             Student newStudent = new Student();
             newStudent.Id = Guid.NewGuid();
             newStudent.Name = nome;
-            newStudent.Password = senha;
+            newStudent.PasswordHash = senha;
             newStudent.Age = 21;
-            newStudent.Class = turma;
+            newStudent.ClassNumber = turma;
             newStudent.Course = curso;
 
             const string connectionString = "Server=localhost,1433;Database=EscolaOnline;User ID=sa;Password=1q2w3e4r@#$";
@@ -136,9 +136,9 @@ namespace EscolaOuline.Services
                 {
                     newStudent.Id,
                     newStudent.Name,
-                    newStudent.Password,
+                    newStudent.PasswordHash,
                     newStudent.Age,
-                    newStudent.Class,
+                    newStudent.ClassNumber,
                     newStudent.Course
                 });
 
@@ -317,7 +317,7 @@ namespace EscolaOuline.Services
             Professor professor = new Professor();
             professor.Id = Guid.NewGuid();
             professor.Name = nome;
-            professor.Password = senha;
+            professor.PasswordHash = senha;
             professor.Ocupation = ocupacao;
             professor.Salary = salario;
 
@@ -334,7 +334,7 @@ namespace EscolaOuline.Services
             var rows = connection.Execute(insertProfessorSql, new {
                 professor.Id,
                 professor.Name,
-                professor.Password,
+                professor.PasswordHash,
                 professor.Ocupation,
                 professor.Salary
             });

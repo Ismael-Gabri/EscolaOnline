@@ -16,7 +16,7 @@ namespace EscolaOuline.AccountsDto
         }
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public string Password { get; set; }
+        public string PasswordHash { get; set; }
         public string Ocupation { get; set; }
         public double Salary { get; set; }
         public Contact Contato { get; set; }

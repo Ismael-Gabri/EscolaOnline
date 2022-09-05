@@ -17,23 +17,23 @@ namespace EscolaOuline.Services
             studentAccountList.Add(new Student()
             {
                 Name = "Clebinho",
-                Password = "Fortnite22",
+                PasswordHash = "Fortnite22",
                 Course = "Ciencia da computacao",
-                Class = 1003
+                ClassNumber = 1003
             });
             studentAccountList.Add(new Student()
             {
                 Name = "Marcia",
-                Password = "Brigadeiro33",
+                PasswordHash = "Brigadeiro33",
                 Course = "Engenharia",
-                Class = 2002
+                ClassNumber = 2002
             });
             studentAccountList.Add(new Student()
             {
                 Name = "Pedro",
                 Course = "Medicina",
-                Password = "MedicinaPorDinheiro33",
-                Class = 3002
+                PasswordHash = "MedicinaPorDinheiro33",
+                ClassNumber = 3002
             });
 
             return studentAccountList;
@@ -46,7 +46,7 @@ namespace EscolaOuline.Services
             ProfessorsList.Add(new Professor()
             {
                 Name = "Guilherme",
-                Password = "ChurrascoComCoca22",
+                PasswordHash = "ChurrascoComCoca22",
                 Ocupation = "Math teacher",
                 Salary = 1200.00
             });
@@ -54,14 +54,14 @@ namespace EscolaOuline.Services
             ProfessorsList.Add(new Professor()
             {
                 Name = "Clebinho562",
-                Password = "MbK20",
+                PasswordHash = "MbK20",
                 Ocupation = "English teacher",
                 Salary = 1200.00
             });
             ProfessorsList.Add(new Professor()
             {
                 Name = "Marcus",
-                Password = "UmaSenhaMuitoSegura55",
+                PasswordHash = "UmaSenhaMuitoSegura55",
                 Ocupation = "Biology teacher",
                 Salary = 1200.00,
             });
@@ -76,7 +76,7 @@ namespace EscolaOuline.Services
             adminsAccountsList.Add(new Admin()
             {
                 Name = "IsmaelGabri",
-                Password = "z9)Fd6Ln_&D]6pVs",
+                PasswordHash = "z9)Fd6Ln_&D]6pVs",
             });
 
             return adminsAccountsList;

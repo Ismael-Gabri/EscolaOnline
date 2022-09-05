@@ -103,7 +103,7 @@ public class StudentRegistration
             Name = name,
             Age = Int32.Parse(age),
             Course = course,
-            Password = senha,
+            PasswordHash = senha,
         });
     }
 }   

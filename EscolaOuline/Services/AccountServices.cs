@@ -30,8 +30,8 @@ namespace EscolaOuline.Services
                     Console.WriteLine("------------------------------");
                     Console.WriteLine($"ID: {studentAccount.Id}");
                     Console.WriteLine($"Nome: {studentAccount.Name}");
-                    Console.WriteLine($"Turma: {studentAccount.Class}");
-                    Console.WriteLine($"Senha: {studentAccount.Password}");
+                    Console.WriteLine($"Turma: {studentAccount.ClassNumber}");
+                    Console.WriteLine($"Senha: {studentAccount.PasswordHash}");
                     Console.WriteLine($"Curso: {studentAccount.Course}");
                     Console.WriteLine("-----------------------------");
 
@@ -57,7 +57,7 @@ namespace EscolaOuline.Services
                     Console.WriteLine($"ID: {professorAccount.Id}");
                     Console.WriteLine($"Nome: {professorAccount.Name}");
                     Console.WriteLine($"Ocupacao: {professorAccount.Ocupation}");
-                    Console.WriteLine($"Senha: {professorAccount.Password}");
+                    Console.WriteLine($"Senha: {professorAccount.PasswordHash}");
                     Console.WriteLine($"Salário: {professorAccount.Salary}");
                     Console.WriteLine("-----------------------------");
 
